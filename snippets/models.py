@@ -13,4 +13,11 @@ class Snippet(models.Model):
     title = models.CharField(max_length=100, blank=True, default='')
     code = models.TextField()
     linos = models.BooleanField()
+    language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
+    style = models.CharField(choices=STYLE_CHOICES, default='friendly',max_length=100)
+
+    def __str__(self):
+        return self.title
     
+    class Meta:
+        ordering = ['created']

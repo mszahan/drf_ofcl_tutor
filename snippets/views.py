@@ -27,7 +27,7 @@ class SnippetViewSet(viewsets.ModelViewSet):
     serializer_class = SnippetSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,
                           IsOwnerOrReadOnly]
-                          
+
     # Notice that we've also used the @action decorator to create a custom action, named highlight. 
     # This decorator can be used to add any custom endpoints that don't fit into the standard create/update/delete style.
     @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
@@ -89,12 +89,13 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 #     serializer_class = UserSerializer
 
 
-@api_view(['GET'])
-def api_root(request, format=None):
-    return Response({
-        'users': reverse('user-list', request=request, format=format),
-        'snippets': reverse('snippet-list', request=request, format=format)
-    })
+
+# @api_view(['GET'])
+# def api_root(request, format=None):
+#     return Response({
+#         'users': reverse('user-list', request=request, format=format),
+#         'snippets': reverse('snippet-list', request=request, format=format)
+#     })
 
 
 
